@@ -7,14 +7,8 @@ export const reservationService = {
     return response.data
   },
 
-  // Get user's reservations
+  // Get user's reservations (alias: getMyReservations)
   getUserReservations: async (params = {}) => {
-    const response = await api.get('/reservations/my-reservations', { params })
-    return response.data
-  },
-
-  // Alias for getUserReservations
-  getMyReservations: async (params = {}) => {
     const response = await api.get('/reservations/my-reservations', { params })
     return response.data
   },

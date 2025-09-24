@@ -7,10 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { Toaster } from 'react-hot-toast'
 
 import App from './App'
-import SimpleApp from './SimpleApp'
-import SimpleTest from './SimpleTest'
 import { AuthProvider } from './contexts/AuthContext'
-import { TestAuthProvider } from './TestAuthProvider'
 import { SocketProvider } from './contexts/SocketContext'
 
 // Create React Query client

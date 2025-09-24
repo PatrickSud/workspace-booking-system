@@ -216,12 +216,12 @@ function MyReservationsPage() {
       console.log('Check-in não disponível - Status:', reservation.status)
       return false
     }
-    
+
     const now = new Date()
     const startTime = parseISO(reservation.start_time)
     const endTime = parseISO(reservation.end_time)
-    const checkInWindow = addMinutes(startTime, -15) // 15 min before
-    
+    const checkInWindow = addMinutes(startTime, -15) // 15 min antes
+
     console.log('Check-in debug:', {
       now: now.toISOString(),
       startTime: startTime.toISOString(),
@@ -229,12 +229,15 @@ function MyReservationsPage() {
       checkInWindow: checkInWindow.toISOString(),
       canCheckIn: isAfter(now, checkInWindow) && isBefore(now, endTime)
     })
-    
-    // Para testes: permitir check-in em reservas que começam nas próximas 24 horas
+
+    // Regra original para produção
+    const isWithinOriginalWindow = isAfter(now, checkInWindow) && isBefore(now, endTime)
+
+    // Regra flexível para desenvolvimento - permite check-in em reservas das próximas 24 horas
     const twentyFourHoursFromNow = addMinutes(now, 24 * 60)
     const isWithinTestWindow = isBefore(startTime, twentyFourHoursFromNow) && isAfter(endTime, now)
-    
-    return (isAfter(now, checkInWindow) && isBefore(now, endTime)) || isWithinTestWindow
+
+    return isWithinOriginalWindow || isWithinTestWindow
   }
 
   const formatDate = (dateString) => {

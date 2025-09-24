@@ -10,7 +10,6 @@ import LoadingScreen from './components/Common/LoadingScreen'
 
 // Pages
 import LoginPage from './pages/Auth/LoginPage'
-import LoginPageSimple from './pages/Auth/LoginPageSimple'
 import RegisterPage from './pages/Auth/RegisterPage'
 import DashboardPage from './pages/Dashboard/DashboardPage'
 import BuildingsPage from './pages/Buildings/BuildingsPage'
@@ -23,7 +22,7 @@ import ReservationsPage from './pages/Reservations/ReservationsPage'
 import MyReservationsPage from './pages/Reservations/MyReservationsPage'
 import CreateReservationPage from './pages/Reservations/CreateReservationPage'
 import UsersPage from './pages/Users/UsersPage'
-import ProfilePageSimple from './pages/Profile/ProfilePageSimple'
+import ProfilePage from './pages/Profile/ProfilePage'
 import ReportsPage from './pages/Reports/ReportsPage'
 import CheckInPage from './pages/CheckIn/CheckInPage'
 import NotFoundPage from './pages/Error/NotFoundPage'
@@ -88,7 +87,7 @@ function App() {
                   <Route path="/users" element={<UsersPage />} />
                   
                   {/* Profile */}
-                  <Route path="/profile" element={<ProfilePageSimple />} />
+                  <Route path="/profile" element={<ProfilePage />} />
                   
                   {/* Reports (Admin only) */}
                   <Route path="/reports" element={<ReportsPage />} />
