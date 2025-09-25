@@ -70,7 +70,6 @@ exports.login = functions.https.onRequest((req, res) => {
         success: false,
         error: 'Credenciais inválidas'
       })
-
     } catch (error) {
       console.error('Login error:', error)
       return res.status(500).json({
@@ -107,7 +106,6 @@ exports.getProfile = functions.https.onRequest((req, res) => {
           phone: '(11) 99999-9999'
         }
       })
-
     } catch (error) {
       console.error('Get profile error:', error)
       return res.status(500).json({

@@ -7,7 +7,9 @@ const isGitHubPages = window.location.hostname === 'patricksud.github.io'
 // Função para testar se Firebase Functions está disponível
 const testFirebaseFunctions = async () => {
   try {
-    const response = await fetch('https://southamerica-east1-workspace-booking-system.cloudfunctions.net/health')
+    const response = await fetch(
+      'https://southamerica-east1-workspace-booking-system.cloudfunctions.net/health'
+    )
     return response.ok
   } catch {
     return false
