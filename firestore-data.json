@@ -1,0 +1,94 @@
+{
+  "users": {
+    "admin-user": {
+      "name": "Administrador",
+      "email": "admin@workspace.com",
+      "role": "admin",
+      "is_active": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    },
+    "regular-user": {
+      "name": "Usuário Teste",
+      "email": "user@workspace.com",
+      "role": "user",
+      "is_active": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  "buildings": {
+    "building-1": {
+      "name": "Edifício Central",
+      "address": "Rua das Flores, 123",
+      "city": "São Paulo",
+      "state": "SP",
+      "zip_code": "01234-567",
+      "country": "Brasil",
+      "description": "Prédio principal da empresa",
+      "is_active": true,
+      "settings": {
+        "business_hours": {
+          "monday": { "start": "08:00", "end": "18:00", "enabled": true },
+          "tuesday": { "start": "08:00", "end": "18:00", "enabled": true },
+          "wednesday": { "start": "08:00", "end": "18:00", "enabled": true },
+          "thursday": { "start": "08:00", "end": "18:00", "enabled": true },
+          "friday": { "start": "08:00", "end": "18:00", "enabled": true },
+          "saturday": { "start": "08:00", "end": "12:00", "enabled": false },
+          "sunday": { "start": "08:00", "end": "12:00", "enabled": false }
+        },
+        "booking_rules": {
+          "max_advance_days": 30,
+          "min_duration_minutes": 30,
+          "max_duration_minutes": 480,
+          "max_concurrent_bookings": 3,
+          "check_in_window_minutes": 15
+        },
+        "amenities": ["Wi-Fi", "Ar condicionado", "Projetor", "Café"]
+      },
+      "contact_info": {
+        "phone": "(11) 1234-5678",
+        "email": "central@workspace.com",
+        "manager": "João Silva"
+      },
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    },
+    "building-2": {
+      "name": "Anexo Sul",
+      "address": "Av. Paulista, 1000",
+      "city": "São Paulo",
+      "state": "SP",
+      "zip_code": "01310-100",
+      "country": "Brasil",
+      "description": "Anexo com foco em inovação",
+      "is_active": true,
+      "settings": {
+        "business_hours": {
+          "monday": { "start": "09:00", "end": "19:00", "enabled": true },
+          "tuesday": { "start": "09:00", "end": "19:00", "enabled": true },
+          "wednesday": { "start": "09:00", "end": "19:00", "enabled": true },
+          "thursday": { "start": "09:00", "end": "19:00", "enabled": true },
+          "friday": { "start": "09:00", "end": "19:00", "enabled": true },
+          "saturday": { "start": "09:00", "end": "13:00", "enabled": true },
+          "sunday": { "start": "09:00", "end": "13:00", "enabled": false }
+        },
+        "booking_rules": {
+          "max_advance_days": 60,
+          "min_duration_minutes": 60,
+          "max_duration_minutes": 600,
+          "max_concurrent_bookings": 5,
+          "check_in_window_minutes": 30
+        },
+        "amenities": ["Wi-Fi", "Cozinha", "Estacionamento", "Sala de jogos"]
+      },
+      "contact_info": {
+        "phone": "(11) 9876-5432",
+        "email": "anexo@workspace.com",
+        "manager": "Maria Souza"
+      },
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  }
+}

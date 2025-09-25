@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require('sequelize')
 
 // Database configuration
 const sequelize = new Sequelize({
@@ -20,15 +20,15 @@ const sequelize = new Sequelize({
     underscored: true,
     freezeTableName: true
   }
-});
+})
 
 // Import models
-const User = require('../models/User')(sequelize);
-const Building = require('../models/Building')(sequelize);
-const Floor = require('../models/Floor')(sequelize);
-const Space = require('../models/Space')(sequelize);
-const Reservation = require('../models/Reservation')(sequelize);
-const CheckIn = require('../models/CheckIn')(sequelize);
+const User = require('../models/User')(sequelize)
+const Building = require('../models/Building')(sequelize)
+const Floor = require('../models/Floor')(sequelize)
+const Space = require('../models/Space')(sequelize)
+const Reservation = require('../models/Reservation')(sequelize)
+const CheckIn = require('../models/CheckIn')(sequelize)
 
 // Define associations
 const models = {
@@ -38,35 +38,50 @@ const models = {
   Space,
   Reservation,
   CheckIn
-};
+}
 
 // User associations
-User.hasMany(Reservation, { foreignKey: 'user_id', as: 'reservations' });
-User.hasMany(CheckIn, { foreignKey: 'user_id', as: 'checkIns' });
-User.belongsTo(Building, { foreignKey: 'building_id', as: 'building' });
+User.hasMany(Reservation, { foreignKey: 'user_id', as: 'reservations' })
+User.hasMany(CheckIn, { foreignKey: 'user_id', as: 'checkIns' })
+User.belongsTo(Building, { foreignKey: 'building_id', as: 'building' })
 
 // Building associations
-Building.hasMany(Floor, { foreignKey: 'building_id', as: 'floors', onDelete: 'CASCADE' });
-Building.hasMany(User, { foreignKey: 'building_id', as: 'users' });
+Building.hasMany(Floor, {
+  foreignKey: 'building_id',
+  as: 'floors',
+  onDelete: 'CASCADE'
+})
+Building.hasMany(User, { foreignKey: 'building_id', as: 'users' })
 
 // Floor associations
-Floor.belongsTo(Building, { foreignKey: 'building_id', as: 'building' });
-Floor.hasMany(Space, { foreignKey: 'floor_id', as: 'spaces', onDelete: 'CASCADE' });
+Floor.belongsTo(Building, { foreignKey: 'building_id', as: 'building' })
+Floor.hasMany(Space, {
+  foreignKey: 'floor_id',
+  as: 'spaces',
+  onDelete: 'CASCADE'
+})
 
 // Space associations
-Space.belongsTo(Floor, { foreignKey: 'floor_id', as: 'floor' });
-Space.hasMany(Reservation, { foreignKey: 'space_id', as: 'reservations', onDelete: 'CASCADE' });
+Space.belongsTo(Floor, { foreignKey: 'floor_id', as: 'floor' })
+Space.hasMany(Reservation, {
+  foreignKey: 'space_id',
+  as: 'reservations',
+  onDelete: 'CASCADE'
+})
 
 // Reservation associations
-Reservation.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
-Reservation.belongsTo(Space, { foreignKey: 'space_id', as: 'space' });
-Reservation.hasOne(CheckIn, { foreignKey: 'reservation_id', as: 'checkIn' });
+Reservation.belongsTo(User, { foreignKey: 'user_id', as: 'user' })
+Reservation.belongsTo(Space, { foreignKey: 'space_id', as: 'space' })
+Reservation.hasOne(CheckIn, { foreignKey: 'reservation_id', as: 'checkIn' })
 
 // CheckIn associations
-CheckIn.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
-CheckIn.belongsTo(Reservation, { foreignKey: 'reservation_id', as: 'reservation' });
+CheckIn.belongsTo(User, { foreignKey: 'user_id', as: 'user' })
+CheckIn.belongsTo(Reservation, {
+  foreignKey: 'reservation_id',
+  as: 'reservation'
+})
 
 module.exports = {
   sequelize,
   models
-};
+}

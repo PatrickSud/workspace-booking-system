@@ -1,32 +1,37 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
+// Firebase Functions base URL
+const FIREBASE_FUNCTIONS_URL =
+  import.meta.env.VITE_FIREBASE_FUNCTIONS_URL ||
+  'https://us-central1-SEU-PROJETO.cloudfunctions.net'
+
 // Create axios instance
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3002/api',
-  timeout: 10000,
+  baseURL: FIREBASE_FUNCTIONS_URL,
+  timeout: 30000 // Firebase Functions podem demorar mais para inicializar
 })
 
 // Request interceptor to add auth token
 api.interceptors.request.use(
-  (config) => {
+  config => {
     const token = localStorage.getItem('token')
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }
     return config
   },
-  (error) => {
+  error => {
     return Promise.reject(error)
   }
 )
 
 // Response interceptor to handle errors
 api.interceptors.response.use(
-  (response) => {
+  response => {
     return response
   },
-  (error) => {
+  error => {
     const { response } = error
 
     if (response?.status === 401) {
