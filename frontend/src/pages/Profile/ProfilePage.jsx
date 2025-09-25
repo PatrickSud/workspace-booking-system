@@ -36,7 +36,6 @@ import {
   Business,
   Email,
   Phone,
-  Department,
   AccessTime,
   EventAvailable
 } from '@mui/icons-material'
@@ -219,7 +218,7 @@ function ProfilePage() {
                     onChange={(e) => setFormData({ ...formData, department: e.target.value })}
                     disabled={!editMode}
                     InputProps={{
-                      startAdornment: <Department sx={{ mr: 1, color: 'text.secondary' }} />
+                      startAdornment: <Business sx={{ mr: 1, color: 'text.secondary' }} />
                     }}
                   />
                 </Grid>
