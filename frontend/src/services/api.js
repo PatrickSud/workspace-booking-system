@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 // Firebase Functions base URL
 const FIREBASE_FUNCTIONS_URL =
   import.meta.env.VITE_FIREBASE_FUNCTIONS_URL ||
-  'https://us-central1-workspace-booking-system.cloudfunctions.net'
+  'https://southamerica-east1-workspace-booking-system.cloudfunctions.net'
 
 // Create axios instance
 const api = axios.create({

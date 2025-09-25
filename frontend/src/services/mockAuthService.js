@@ -29,13 +29,15 @@ export const mockAuthService = {
   login: async (email, password) => {
     // Simular delay de rede
     await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    const user = MOCK_USERS.find(u => u.email === email && u.password === password)
-    
+
+    const user = MOCK_USERS.find(
+      u => u.email === email && u.password === password
+    )
+
     if (!user) {
       throw new Error('Credenciais inválidas')
     }
-    
+
     // Simular resposta do servidor
     return {
       user: {
@@ -51,17 +53,17 @@ export const mockAuthService = {
   },
 
   // Register user
-  register: async (userData) => {
+  register: async userData => {
     await new Promise(resolve => setTimeout(resolve, 1000))
-    
+
     const newUser = {
       id: MOCK_USERS.length + 1,
       ...userData,
       role: 'user'
     }
-    
+
     MOCK_USERS.push(newUser)
-    
+
     return {
       user: {
         id: newUser.id,
@@ -78,15 +80,15 @@ export const mockAuthService = {
   // Get user profile
   getProfile: async () => {
     await new Promise(resolve => setTimeout(resolve, 500))
-    
+
     const token = localStorage.getItem('token')
     if (!token) {
       throw new Error('Token não encontrado')
     }
-    
+
     // Simular busca do usuário pelo token
     const user = MOCK_USERS[0] // Usar primeiro usuário como exemplo
-    
+
     return {
       id: user.id,
       email: user.email,
@@ -98,12 +100,12 @@ export const mockAuthService = {
   },
 
   // Update user profile
-  updateProfile: async (profileData) => {
+  updateProfile: async profileData => {
     await new Promise(resolve => setTimeout(resolve, 1000))
-    
+
     const user = MOCK_USERS[0]
     Object.assign(user, profileData)
-    
+
     return {
       id: user.id,
       email: user.email,
@@ -117,21 +119,21 @@ export const mockAuthService = {
   // Change password
   changePassword: async (currentPassword, newPassword) => {
     await new Promise(resolve => setTimeout(resolve, 1000))
-    
+
     const user = MOCK_USERS[0]
     if (user.password !== currentPassword) {
       throw new Error('Senha atual incorreta')
     }
-    
+
     user.password = newPassword
-    
+
     return { message: 'Senha alterada com sucesso' }
   },
 
   // Refresh token
   refreshToken: async () => {
     await new Promise(resolve => setTimeout(resolve, 500))
-    
+
     return {
       token: MOCK_TOKEN + '-refreshed'
     }
@@ -140,7 +142,7 @@ export const mockAuthService = {
   // Logout
   logout: async () => {
     await new Promise(resolve => setTimeout(resolve, 500))
-    
+
     return { message: 'Logout realizado com sucesso' }
   }
 }
