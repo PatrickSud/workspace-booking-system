@@ -35,7 +35,6 @@
     "eslint": "^8.47.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "gh-pages": "^6.1.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.9"
   },
@@ -44,8 +43,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint src --ext js,jsx,ts,tsx",
-    "lint:fix": "eslint src --ext js,jsx,ts,tsx --fix",
-    "deploy": "npm run build && gh-pages -d dist"
+    "lint:fix": "eslint src --ext js,jsx,ts,tsx --fix"
   },
   "browserslist": {
     "production": [
